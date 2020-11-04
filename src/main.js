@@ -4,6 +4,10 @@ import router from "./router";
 import store from "./store";
 import Loading from 'vue-loading-overlay' //component
 import 'vue-loading-overlay/dist/vue-loading.css' //style
+import 'jquery';
+import "popper.js"; 
+import "bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 Vue.config.productionTip = false;
 Vue.component('Loading', Loading)

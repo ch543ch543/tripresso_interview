@@ -26,7 +26,7 @@
         </div>
       </nav> 
       <div  v-for = "(item, index) in data" :key="index">
-        <div class = "cards" style="display: flex; align-items: left; justify-content: center;">
+        <div class = "cards">
           <div class = 'img' style="width: 25%; height: 100%">
             <img :src="item.image_url" style="width:100%; 
             height:100%; 
@@ -57,7 +57,7 @@
               </div>
             </div>
             <hr style="margin: 5px 0px;">
-            <div class='timeandnum' style="display: flex; align-items: center; padding-left: 20px;">
+            <div class='timeandnum'>
               <div style="width: 75%; display: flex; align-items: center;">
                 <div v-for = "(option, index) in item.group" :key="index" style="margin-right: 10px;">
                   <h5 class='date'>{{ option.date | date }} ( {{ option.date | day}} )</h5>
@@ -65,10 +65,10 @@
                 </div>
               </div>
               <div style="width: 25%;  margin-left: 20px;">
-                <h5 style="color:rgb(253, 163, 60); font-size: 1.8em; display: inline; font-weight: bold;">{{ item.tour_days }}</h5>
-                <h5 style="font-size: 1em; display: inline;">天</h5>
-                <h5 style="color:rgb(253, 163, 60); font-size: 1.8em; display: inline; font-weight: bold;">{{ item.min_price | currency }}</h5>
-                <h5 style="font-size: 1em; display: inline;">元起</h5>
+                <p style="color:rgb(253, 163, 60); font-size: 1.8em; display: inline; font-weight: bold;">{{ item.tour_days }}</p>
+                <p style="font-size: 1em; display: inline;">天</p>
+                <p style="color:rgb(253, 163, 60); font-size: 1.8em; display: inline; font-weight: bold;">{{ item.min_price | currency }}</p>
+                <p style="font-size: 1em; display: inline;">元起</p>
               </div>    
             </div>
           </div>
@@ -113,7 +113,7 @@ export default {
       this.data = [];
       this.isloading = true;
       let tourdata = await axios
-      .get(`http://interview.tripresso.com/tour/search?page=${page}&row_per_page=${rpp}&sort=${sort}`)
+      .get(`https://interview.tripresso.com/tour/search?page=${page}&row_per_page=${rpp}&sort=${sort}/`)
       this.data = tourdata.data.data.tour_list;
       console.log(new Date (this.data[0].group[0].date))
     } catch (error) {
@@ -193,17 +193,12 @@ export default {
   padding-right: 0px;
   height: 220px;
 }
+
 h5 {
   margin: 0px;
 }
 
-h5.agency  {
-  color:gray;
-  text-align: left;
-  font-size: 1rem;
-  padding-left: 20px;
-  padding-top: 20px;
-}
+h5
 
 h5.title  {
   color:black;
@@ -213,13 +208,19 @@ h5.title  {
   height: 67px;
 }
 
-h5.date  {
+.timeandnum {
+  display: flex; 
+  align-items: center; 
+  padding-left: 20px;
+ }
+
+ h5.date  {
   color:rgb(73, 180, 216);
   text-align: left;
   font-size: 0.8rem;
   padding-top: 10px;
   padding-right: 20px;
-}
+} 
 
 button.num  {
   background-color:rgb(58, 165, 201);
@@ -244,7 +245,13 @@ button.tags  {
   border-color: rgb(73, 180, 216);
   background-color: white;
 }
+ .cards {
+  display: flex; 
+  align-items: left; 
+  justify-content: center;
+ }
 
+ 
 
 
 
