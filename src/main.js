@@ -1,5 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
+import router from "./router";
+import store from "./store";
 import Loading from 'vue-loading-overlay' //component
 import 'vue-loading-overlay/dist/vue-loading.css' //style
 
@@ -29,6 +31,8 @@ Vue.filter('day',function(value){
 });
 
 new Vue({
+  router,
+  store,
   data () {
     return {
       info: null
