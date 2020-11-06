@@ -9,9 +9,11 @@ import "popper.js";
 import "bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 Vue.config.productionTip = false;
 Vue.component('Loading', Loading)
 
+/// filter ///
 Vue.filter('currency',function(value){
   return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 });
@@ -33,6 +35,11 @@ Vue.filter('day',function(value){
   let day = new Date (value)
   return "日一二三四五六".charAt(day.getDay())
 });
+
+Vue.filter('rating',function(value){
+  return "★".repeat(value)+"☆".repeat(5-value);
+});
+//////////
 
 new Vue({
   router,
