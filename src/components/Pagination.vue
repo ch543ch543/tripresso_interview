@@ -1,20 +1,19 @@
 <template>
     <div class="pagination">
         <div class="pagination-row">
-            <!-- previous page button -->
-            <button class="btn btn-light" @click = "resetpage(pageNumber + 1)"> &lt; </button>
-            <!-- pagination button --> 
+            <button class="btn btn-light" @click = "resetpage(pageNumber - 1)"> &lt; </button> <!-- previous page button -->
+             
             <span v-for= "(item, index) in new Array(10)" :key="index">
-                <button class="btn btn-light"  @click = "resetpage(index + 1)">{{ index+1 }}</button>
+                <button class="btn btn-light"  @click = "resetpage(index + 1)">{{ index+1 }}</button><!-- pagination button -->
             </span> 
-            <!-- next page button -->
-            <button class="btn btn-light" @click = "resetpage(pageNumber - 1)"> &gt; </button>
+            
+            <button class="btn btn-light" @click = "resetpage(pageNumber + 1)"> &gt; </button><!-- next page button -->
         </div>
     </div>
 </template>
   
 <script>
-  export default {
+export default {
     name: "pagination",
     props: {
         pageNumber:{ 
@@ -28,11 +27,11 @@
             this.$emit('update:pageNumber', this.pageNumber); //子元件與父元件雙向綁定
         }
     }
-  };
+};
 </script>
   
   <!-- Add "scoped" attribute to limit CSS to this component only -->
-  <style scoped lang="scss">
+<style scoped lang="scss">
     .pagination-row {
         margin-left: auto;
         margin-right: auto;
@@ -43,5 +42,5 @@
         cursor: pointer;
     }
 
-  </style>
+</style>
   

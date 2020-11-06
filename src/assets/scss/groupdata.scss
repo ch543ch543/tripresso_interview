@@ -1,0 +1,100 @@
+///////functions//////////////////
+
+@mixin display($justify) {
+    display: flex; 
+    align-items: center; 
+    justify-content: $justify;
+}
+
+@mixin fontandcolor($c, $align, $size, $bc, $w){
+    color: $c;
+    text-align: $align;
+    font-size: $size;
+    background-color: $bc;
+    font-weight: $w;
+}
+
+@mixin border($s,$r,$c,$w) {
+    border-style: $s;
+    border-radius: $r;
+    border-color: $c;
+    border-width: $w;
+}
+
+@mixin size($w, $h) {
+    width: $w;
+    height: $h;
+}
+
+///////////////////////////
+
+.container {
+    width: 80%
+  }
+  
+.cards {
+    @include display(center);
+    background-color: white;
+    margin: 20px 0px;
+    height: 220px;
+}
+
+.img {
+    @include size(25%, 100%)
+}
+
+img{
+    @include size(100%, 100%);
+    object-fit:cover; 
+}
+
+.info{
+    width: 75%; 
+    margin: auto;
+    .infocontent{
+        padding: 0px 20px;
+    }
+    h5 {
+        margin: 0px;
+        text-align: left;
+        padding: 3px 0px;
+    }
+    .title {
+        font-size: 1.2rem;
+        height: 55px;
+    }
+}
+
+.tags, .timeandnum {
+    @include display(left);
+}
+
+.timenumprice {
+    @include display(space-between);
+}
+
+p.date  {
+    margin: 5px 10px;
+    @include fontandcolor(rgb(73, 180, 216), left, 0.8rem, transparent, none);
+} 
+
+button.num  {
+    padding: 5px 10px;
+    @include fontandcolor( white, left, 0.8rem ,rgb(58, 165, 201), none);
+    @include border(solid,3px,transparent,1px);
+}
+
+button.tag  {
+    margin: 5px 5px;
+    @include fontandcolor(rgb(73, 180, 216), left, 0.8rem, white, none);
+    @include border(solid,10px,rgb(73, 180, 216),1px)
+} 
+
+p.bigfont {
+    @include fontandcolor(rgb(253, 163, 60), center, 1.8rem, transparent, bold);
+    display: inline; 
+}
+
+p.normalfont {
+    display: inline;
+}
