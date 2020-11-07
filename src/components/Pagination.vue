@@ -20,11 +20,16 @@ export default {
             type: Number,
         }
     },
+    data() {
+        return {
+            pagenumber: this.pageNumber
+        }
+    },
     methods: {
         resetpage(page) {
-            this.pageNumber = page;
+            this.pagenumber = page;
             //use 'update:"props-name"' to emit a update event, and pass the change value.
-            this.$emit('update:pageNumber', this.pageNumber); //子元件與父元件雙向綁定
+            this.$emit('update:pageNumber', this.pagenumber); //子元件與父元件雙向綁定
         }
     }
 };

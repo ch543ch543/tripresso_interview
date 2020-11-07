@@ -37,17 +37,18 @@ export default {
   },
   data() {
     return{
+      sorting: this.sort,
       pricesort: '低至高',
       ratingsort: ''
     }
   },
   methods: {
     sortmethod(sort, pricesort, ratingsort){
-      this.sort = sort;
+      this.sorting = sort;
       this.pricesort = pricesort
       this.ratingsort = ratingsort
       //use 'update:"props-name"' to emit a update event, and pass the change value.
-      this.$emit('update:sort', this.sort); //子元件與父元件雙向綁定
+      this.$emit('update:sort', this.sorting); //子元件與父元件雙向綁定
     }
   }
 };
